@@ -76,6 +76,26 @@ router.post('/delete/:eid', function(req, res){
 		}
 	});
 })
+router.post('/', function(req, res){
+		
+		var user ={
+			employeename: req.body.employeename,
+			contactno: req.body.contactno,
+			username: req.body.uname,
+			password: req.body.password,
+			type: req.body.type
+		};
+
+		userModel.insert(user, function(status){
+			if(status){
+				res.redirect('/home/alluser');
+			}else{
+				res.redirect('/home/alluser');
+			}
+		});
+})
+
+
 
 module.exports = router;
 

@@ -3,7 +3,7 @@ var router 		= express.Router();
 var userModel	= require.main.require('./models/user-model');
 
 router.get('/', function(req, res){
-	console.log('login page requested!');
+	console.log('Registration page requested!');
 	res.render('registration/index');
 });
 
@@ -24,7 +24,7 @@ router.post('/', function(req, res){
 				res.redirect('/registration');
 			}
 		});
-});
+})
 
 module.exports = router;
 
