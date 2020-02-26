@@ -13,11 +13,11 @@ router.post('/', function(req, res){
 			employeename: req.body.employeename,
 			contactno: req.body.contactno,
 			username: req.body.uname,
-			password: req.body.password
-			type: req.body.type,
+			password: req.body.password,
+			type: req.body.type
 		};
 
-		userModel.validate(user, function(status){
+		userModel.insert(user, function(status){
 			if(status){
 				res.redirect('/login');
 			}else{
