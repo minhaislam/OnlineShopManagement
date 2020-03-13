@@ -76,26 +76,32 @@ router.post('/delete/:eid', function(req, res){
 		}
 	});
 })
-router.post('/', function(req, res){
-		
-		var user ={
-			employeename: req.body.employeename,
+
+router.get('/insert', function(req, res){
+	userModel.insert(user, function(result){
+		res.render('home/insert', {user: result});
+	});
+});
+
+router.post('/insert', function(req, res){
+
+	var user ={
+		    employeename: req.body.employeename,
 			contactno: req.body.contactno,
 			username: req.body.uname,
 			password: req.body.password,
 			type: req.body.type
-		};
+	};
 
-		userModel.insert(user, function(status){
-			if(status){
-				res.redirect('/home/alluser');
-			}else{
-				res.redirect('/home/alluser');
-			}
-		});
-})
-
-
+	userModel.insert(user, function(status){
+	 	if(status){
+			//res.cookie('username', req.body.uname);
+			res.redirect('/home');
+		}else{
+			res.send('invalid username/password');
+		}
+	});
+});
 
 module.exports = router;
 
